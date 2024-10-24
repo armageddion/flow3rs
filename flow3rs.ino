@@ -44,7 +44,7 @@ int status = WL_IDLE_STATUS;
 WiFiServer server(80);
 
 // current state
-int state = 1;                    // initial state is purple
+int state = 0;                    // initial state is purple
 
 void setup() {
 // This is for Trinket 5V 16MHz, you can remove these three lines if you are not using a Trinket
@@ -57,10 +57,13 @@ void setup() {
   pinMode(PIN_LED_1, OUTPUT);  
   pinMode(PIN_LED_2, OUTPUT);  
 
-  pixels_1.begin();  // This initializes the NeoPixel library
+  pixels_1.begin();                 // This initializes the NeoPixel library
   pixels_2.begin();
 
-  Serial.begin(9600);  // DEBUG
+  int state = 0;                    // initial state is purple
+  pattern1(1);                      // turn lights on and make them purple
+
+  Serial.begin(9600);               // DEBUG
 
   // check for the WiFi module:
   if (WiFi.status() == WL_NO_MODULE) {
